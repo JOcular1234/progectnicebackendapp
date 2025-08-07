@@ -31,7 +31,7 @@ app.use(helmet());
 app.use(cors({ origin: 'http://localhost:3000' })); // Adjust for React app
 app.use(express.json());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Root route for status check
 app.get('/', (req, res) => {
