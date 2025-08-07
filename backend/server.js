@@ -33,7 +33,13 @@ app.use(express.json());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Root route for status check
+app.get('/', (req, res) => {
+    res.json({ status: 'Backend is running', message: 'Welcome to the API' });
+});
+
 // Routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/stories', storyRoutes);
